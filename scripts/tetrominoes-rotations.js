@@ -1,41 +1,45 @@
-console.log('working');
+console.log("working");
 
 function moveRight() {
-    let collision = false;
+  let isEdge;
+  currentTetromino[currentRotation].forEach((p) => {
+    let edge = document
+      .querySelector(`.cell-${currentPosition + p}`)
+      .classList.contains("edge");
+    if (edge) isEdge = true;
+  });
+
+  if (!isEdge) {
     undrawTetrominoInMainBoard();
-    currentTetromino.position ++;
+    currentPosition++;
     drawTetrominoInMainBoard();
+  }
 }
 
 function moveLeft() {
-    let collision = false;
+  console.log(currentPosition);
+  let collision = currentPosition % boardWidth === 0;
+  console.log(collision);
+  if (!collision) {
     undrawTetrominoInMainBoard();
-    currentTetromino.position --;
+    currentPosition--;
     drawTetrominoInMainBoard();
+  }
 }
 
 function moveDown() {
-    let collision = false;
-    undrawTetrominoInMainBoard();
-    console.log(currentTetromino.position);
-    currentTetromino.position += boardWidth;
-    console.log(currentTetromino.position);
-    drawTetrominoInMainBoard();
+  undrawTetrominoInMainBoard();
+  currentPosition += boardWidth;
+  drawTetrominoInMainBoard();
 }
 
 function rotate() {
-    let collision = false;
-    undrawTetrominoInMainBoard();
-    currentTetromino.position ++;
-    drawTetrominoInMainBoard();
+  undrawTetrominoInMainBoard();
+  if (currentRotation >= 3) currentRotation = 0;
+  else currentRotation++;
+  drawTetrominoInMainBoard();
 }
 
-
-
-document.body.onkeydown = function (e) {
-    console.log(e.key);
-    if (e.key === 'ArrowRight') moveRight();
-    if (e.key === 'ArrowDown') moveDown();
-    if (e.key === 'ArrowLeft') moveLeft();
-    if (e.key === 'ArrowUp') rotate();
-};
+function getMaxNum() {
+  return Math.max(...currentTetromino[currentRotation]);
+}
