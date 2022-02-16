@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="board__container">
+        <div class="board__img-container">
+            <img class="board__img-header" src="title_screen.jpg">
+        </div>
+
+        <div class="board__grid-container">
+            <div class="tetris__grid">
+            </div>
+
+            <div class="board__score-container">
+                <h3 class="board__score-header">Score</h3>
+                <p class="board__score-total">0</p>
+                <div class="score__grid"></div>
+                <span class="board__arrows-moves"> 🢀 🢂 🢃 Move </span>
+                <span class="board__arrows-moves"> 🢁 Rotate </span>
+            </div>
+
+
+        </div>
+    </div>
+
+
+<script src="main-display.js"></script>
+<script src="scripts/board.js"></script>
+<script src="scripts/tetrominoes.js"></script>
+<script src="scripts/tetrominoes-rotations.js"></script>
+<script src="scripts/tests.js"></script>
+
+</body>
+</html>
