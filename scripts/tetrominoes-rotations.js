@@ -1,6 +1,7 @@
 console.log("working");
 
 function moveRight() {
+  let canMoveRight;
   let isEdge;
   currentTetromino[currentRotation].forEach((p) => {
     let edge = document
@@ -10,21 +11,29 @@ function moveRight() {
   });
 
   if (!isEdge) {
+    canMoveRight = true;
     undrawTetrominoInMainBoard();
     currentPosition++;
     drawTetrominoInMainBoard();
+  } else {
+    canMoveRight = false;
   }
+
+  return canMoveRight;
 }
 
 function moveLeft() {
-  console.log(currentPosition);
+  let canMoveLeft;
   let collision = currentPosition % boardWidth === 0;
-  console.log(collision);
   if (!collision) {
+    canMoveLeft = true;
     undrawTetrominoInMainBoard();
     currentPosition--;
     drawTetrominoInMainBoard();
+  } else {
+    canMoveLeft = false;
   }
+  return canMoveLeft;
 }
 
 function moveDown() {
