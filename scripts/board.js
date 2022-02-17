@@ -21,10 +21,6 @@ function drawBoard(clase, width, heigth, gridcontainer) {
   }
 }
 
-drawBoard("cell", boardWidth, boardHeight, tetrisGridContainer);
-
-drawBoard("score", miniboard_width, miniboard_height, scoreGridContainer);
-
 
 document.body.onkeydown = function (e) {
   console.log(e.key);

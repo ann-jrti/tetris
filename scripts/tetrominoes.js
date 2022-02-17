@@ -15,11 +15,10 @@ let currentPosition = 0
 let currentRotation = 0;
 let nextRotation = currentRotation + 1;
 let currentPieceInMiniBoard 
+let nextTetromino;
 
-let tetromino = generateRandomTetromino();
-currentTetromino = tetromino.piece;
-console.log(currentTetromino[currentRotation]);
-console.log(tetromino);
+
+
 
 function generateRandomTetromino() {
     const randomIndex = Math.floor(Math.random()*7)
@@ -33,15 +32,21 @@ function generateRandomTetromino() {
 }
 
 function drawTetrominoInMainBoard() {
-    currentTetromino[currentRotation].forEach(e => document.querySelector(`.cell-${e+currentPosition}`).style.opacity = 1)
+    currentTetromino[currentRotation].forEach(e => {
+        document.querySelector(`.cell-${e+currentPosition}`).style.opacity = 1
+        document.querySelector(`.cell-${e+currentPosition}`).classList.add('filled')  
+    })
 }
 
 function undrawTetrominoInMainBoard() {
-    currentTetromino[currentRotation].forEach(e => document.querySelector(`.cell-${e+currentPosition}`).style.opacity = 0.2)
+    currentTetromino[currentRotation].forEach(e => {
+        document.querySelector(`.cell-${e+currentPosition}`).style.opacity = 0.2
+        document.querySelector(`.cell-${e+currentPosition}`).classList.remove('filled')  
+    })
 }
 
 function drawTetrominoInMiniBoard() {
-    const tetrominoMiniBoard = currentTetromino[currentTetromino.rotation].map( (pos, i, arr) => {
+    const tetrominoMiniBoard = nextTetromino[currentRotation].map( (pos, i, arr) => {
         if (pos >= 40) return pos = pos-(6*4);
         else if (pos >= 30) return pos = pos-(6*3);
         else if (pos >= 20) return pos = pos-(6*2);
@@ -53,5 +58,15 @@ function drawTetrominoInMiniBoard() {
 }
 
 function clearMiniBoard() {
-    currentPieceInMiniBoard.forEach(e => document.querySelector(`.score${e}`).style.opacity = 0.2)
+    currentPieceInMiniBoard.forEach(e => document.querySelector(`.score-${e}`).style.opacity = 0.2)
+}
+
+function newTetromino() {
+clearMiniBoard()
+reset()
+ currentTetromino = nextTetromino
+ const tetromino = generateRandomTetromino();
+ nextTetromino = tetromino.piece;
+ drawTetrominoInMainBoard()
+ drawTetrominoInMiniBoard()
 }

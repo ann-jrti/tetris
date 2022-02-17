@@ -23,6 +23,9 @@ function isEdge() {
 }
 
 function moveRight() {
+  console.log(currentTetromino);
+console.log(currentTetromino[currentRotation]);
+console.log(currentPosition);
   let canMoveRight;
   if (!isEdge()) {
     canMoveRight = true;
@@ -58,7 +61,9 @@ function moveDown() {
     drawTetrominoInMainBoard();
   } else {
     canMoveDown = false;
+    newTetromino()
   }
+  
   return canMoveDown;
 }
 
@@ -69,7 +74,39 @@ function rotate() {
   nextRotation++;
   drawTetrominoInMainBoard();
 }
+let cells = document.querySelectorAll(".cell-child");
+
+function stay() {
+  let stay 
+  // console.log(currentTetromino[currentPosition]);
+  // const collisionCells = currentTetromino[currentPosition].map(c => c + currentPosition + boardWidth)
+  // console.log(collisionCells);
+  currentTetromino[currentPosition].forEach(p => {
+    console.log(document.querySelector(`.cell-${p + currentPosition + boardWidth}`))
+    console.log(document.querySelector(`.cell-${p + currentPosition + boardWidth}`).classList.contains('filled'));
+  })
+
+  if (currentTetromino[currentPosition].some(p => document.querySelector(`.cell-${p + currentPosition + boardWidth}`).classList.contains('filled'))) {
+    newTetromino();
+    stay = true
+  } else {
+    stay = false
+  }
+  return stay
+}
 
 function getMaxNum() {
   return Math.max(...currentTetromino[currentRotation]);
 }
+
+
+function reset() {
+  currentRotation = 0
+  currentPosition = 0
+  nextRotation = currentRotation + 1
+}
+
+/* 
+collisionCells.some((c) =>
+      document.querySelector(`.cell-${c}`).classList.contains(".bottom-line")
+      */
