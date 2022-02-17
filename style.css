@@ -5,6 +5,11 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+body {
+  background-color: #c6cfa2;
+}
+
 .cell {
   background-color: black;
   width: 30px;
@@ -25,15 +30,14 @@
 
 .board__grid-container {
   display: flex;
-
   justify-content: center;
   align-items: center;
   gap: 26px;
+  margin: 30px;
 }
 .tetris__grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  background-color: #c6cfa2;
   width: 346px;
   height: 692px;
   gap: 2px;
@@ -65,7 +69,6 @@
 .score__grid {
   display: grid;
   grid-template-columns: repeat(4, 0.1fr);
-  background-color: #c6cfa2;
   width: 135px;
   height: 137px;
   gap: 2px;
@@ -92,9 +95,7 @@
   border: 3px solid black;
   padding: 10px;
 }
-.board__container {
-  background-color: #c6cfa2;
-}
+
 .board__img-container {
   display: flex;
   align-content: flex-end;

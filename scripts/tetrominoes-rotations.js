@@ -1,11 +1,23 @@
 console.log("working");
 
+function isBottomLine() {
+  let isBottom;
+  currentTetromino[currentRotation].forEach((p) => {
+    let bottom = document
+      .querySelector(`.cell-${currentPosition + p}`)
+      .classList.contains("bottom-line");
+    if (bottom) isBottom = true;
+  });
+  if (isBottom) return true
+}
+
+
 function moveRight() {
   let canMoveRight;
   let isEdge;
   currentTetromino[currentRotation].forEach((p) => {
     let edge = document
-      .querySelector(`.cell-${currentPosition + p}`)
+      .querySelector(`.cell-${currentPosition + p + boardWidth}`)
       .classList.contains("edge");
     if (edge) isEdge = true;
   });
@@ -37,9 +49,16 @@ function moveLeft() {
 }
 
 function moveDown() {
-  undrawTetrominoInMainBoard();
-  currentPosition += boardWidth;
-  drawTetrominoInMainBoard();
+  let canMoveDown;
+  if (!isBottomLine()) {
+    canMoveDown = true;
+    undrawTetrominoInMainBoard();
+    currentPosition += boardWidth;
+    drawTetrominoInMainBoard();
+  } else {
+    canMoveDown = false;
+  }
+  return canMoveDown;
 }
 
 function rotate() {

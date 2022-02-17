@@ -11,9 +11,8 @@ function drawBoard(clase, width, heigth, gridcontainer) {
   for (let i = 0; i < width * heigth; i++) {
     const cell = document.createElement("div");
     cell.classList.add(clase, `${clase}-${i}`);
-    if (i % width === 9) {
-      cell.classList.add('edge')
-    }
+    if (i % width === 9) cell.classList.add('edge') 
+    if (i >= 190 && i <= 200) cell.classList.add('bottom-line')
     gridcontainer.appendChild(cell);
     const cellChild = document.createElement("div");
     cellChild.classList.add(`${clase}-child`, `${clase}-child-${i}`);
