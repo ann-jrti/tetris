@@ -86,16 +86,14 @@ function stay() {
       document.querySelector(`.cell-${p + currentPosition + boardWidth}`)
     );
     console.log(
-      document
-        .querySelector(`.cell-${p + currentPosition + boardWidth}`)
-        .classList.contains("filled")
+      document.querySelector(`.cell-${p + currentPosition + boardWidth}`).classList.contains("filled")
     );
   });
 
   if (
     currentTetromino[currentPosition].some((p) =>
       document
-        .querySelector(`.cell-${p + currentPosition + boardWidth}`)
+        .querySelector(`.cell-${p + currentPosition + boardWidth *2}`)
         .classList.contains("filled")
     )
   ) {

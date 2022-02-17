@@ -14,7 +14,7 @@ function init() {
   const prepareNext = generateRandomTetromino();
   nextTetromino = prepareNext.piece;
   drawTetrominoInMiniBoard();
-  gameLoop();
+  //gameLoop();
 }
 
 init();

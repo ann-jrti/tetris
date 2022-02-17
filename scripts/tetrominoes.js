@@ -11,7 +11,7 @@ const tetrominoes = [];
 tetrominoes.push(tetrominoI, tetrominoL, tetrominoS, tetrominoZ, tetrominoJ, tetrominoO, tetrominoT);
 
 let currentTetromino
-let currentPosition = 0
+let currentPosition = boardWidth/2;
 let currentRotation = 0;
 let nextRotation = currentRotation + 1;
 let currentPieceInMiniBoard 
