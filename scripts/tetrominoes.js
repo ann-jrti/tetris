@@ -13,6 +13,7 @@ tetrominoes.push(tetrominoI, tetrominoL, tetrominoS, tetrominoZ, tetrominoJ, tet
 let currentTetromino
 let currentPosition = 0
 let currentRotation = 0;
+let nextRotation = currentRotation + 1;
 let currentPieceInMiniBoard 
 
 let tetromino = generateRandomTetromino();

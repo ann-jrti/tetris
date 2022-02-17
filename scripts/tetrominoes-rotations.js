@@ -16,7 +16,7 @@ function isEdge() {
   currentTetromino[currentRotation].forEach((p) => {
     let edge = document
       .querySelector(`.cell-${currentPosition + p + boardWidth}`)
-      .classList.contains("edge");
+      .classList.contains("left-edge");
     if (edge) isEdge = true;
   });
   if (isEdge) return true;
@@ -66,6 +66,7 @@ function rotate() {
   undrawTetrominoInMainBoard();
   if (currentRotation >= 3) currentRotation = 0;
   else currentRotation++;
+  nextRotation++;
   drawTetrominoInMainBoard();
 }
 

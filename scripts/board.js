@@ -11,7 +11,8 @@ function drawBoard(clase, width, heigth, gridcontainer) {
   for (let i = 0; i < width * heigth; i++) {
     const cell = document.createElement("div");
     cell.classList.add(clase, `${clase}-${i}`);
-    if (i % width === 9) cell.classList.add('edge') 
+    if (i % width === 9) cell.classList.add('left-edge') 
+    if (i % width === 0) cell.classList.add('right-edge') 
     if (i >= 190 && i <= 200) cell.classList.add('bottom-line')
     gridcontainer.appendChild(cell);
     const cellChild = document.createElement("div");
@@ -32,3 +33,7 @@ document.body.onkeydown = function (e) {
   if (e.key === 'ArrowLeft') moveLeft();
   if (e.key === 'ArrowUp') rotate();
 };
+
+// setInterval(() => {
+//   moveDown();
+// }, 1000)
