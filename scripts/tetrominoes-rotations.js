@@ -8,12 +8,10 @@ function isBottomLine() {
       .classList.contains("bottom-line");
     if (bottom) isBottom = true;
   });
-  if (isBottom) return true
+  if (isBottom) return true;
 }
 
-
-function moveRight() {
-  let canMoveRight;
+function isEdge() {
   let isEdge;
   currentTetromino[currentRotation].forEach((p) => {
     let edge = document
@@ -21,8 +19,12 @@ function moveRight() {
       .classList.contains("edge");
     if (edge) isEdge = true;
   });
+  if (isEdge) return true;
+}
 
-  if (!isEdge) {
+function moveRight() {
+  let canMoveRight;
+  if (!isEdge()) {
     canMoveRight = true;
     undrawTetrominoInMainBoard();
     currentPosition++;
@@ -30,7 +32,6 @@ function moveRight() {
   } else {
     canMoveRight = false;
   }
-
   return canMoveRight;
 }
 
