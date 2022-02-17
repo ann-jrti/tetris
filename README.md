@@ -1,1 +1,1 @@
-# let´s play tetris!
+# tetris game
